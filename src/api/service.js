@@ -1,27 +1,15 @@
-import api from "./index";
-
-const ENDPOINTS = {
-    spots: "/spots"
-}
-
-const getAllSpots = async () => {
-    try {
-        const response = await api.get(ENDPOINTS.spots)
-        return response
-    } catch (error) {
-        throw Error(error)
-    }
-}
+import supabase from "./index";
 
 const getSelectedSpot = async (id) => {
-    try {
-        const response = await api.get(
-            `${ENDPOINTS.spots}?filters[id][$eqi]=${id}&populate=*`
-        )
-        return response
-    } catch (error) {
-        throw Error(error)
-    }
-}
+  try {
+    const { data } = await supabase
+      .from("spot")
+      .select()
+      .filter("id", "eq", id);
+    return data;
+  } catch (error) {
+    throw Error(error);
+  }
+};
 
-export { getAllSpots, getSelectedSpot }
+export { getSelectedSpot };

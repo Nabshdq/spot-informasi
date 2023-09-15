@@ -1,13 +1,8 @@
-import axios from "axios";
+import { createClient } from "@supabase/supabase-js";
 
-const headers = {
-    Accept: "application/json",
-    "Content-type": "application/json",
-};
+const supabase = createClient(
+  import.meta.env.VITE_DATABASE_URL,
+  import.meta.env.VITE_DATABASE_UNION_KEY
+);
 
-const api = axios.create({
-    baseURL: `${import.meta.env.VITE_SERVER_URL}api`,
-    headers,
-});
-
-export default api;
+export default supabase;

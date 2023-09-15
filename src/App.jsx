@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
-import Spot from "./pages/Spot"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Spot from "./pages/Spot";
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
         <Route path="/:id" element={<Spot />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;
