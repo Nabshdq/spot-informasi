@@ -1,15 +1,24 @@
 import supabase from "./index";
 
-const getSelectedSpot = async (id) => {
+export const getSelectedSpot = async (id) => {
   try {
-    const { data } = await supabase
-      .from("spot")
-      .select()
-      .filter("id", "eq", id);
-    return data;
+    const { data, error } = await supabase
+      .from("spots")
+      .select("*")
+      .eq("id", id)
+    if (data) return data;
+    if (error) throw Error(error)
   } catch (error) {
     throw Error(error);
   }
 };
 
-export { getSelectedSpot };
+export const getAllSpots = async () => {
+  try {
+    const { data, error } = await supabase.from("spots").select("*")
+    if (data) return data
+    if (error) throw Error(error)
+  } catch (error) {
+    throw Error(error);
+  }
+}

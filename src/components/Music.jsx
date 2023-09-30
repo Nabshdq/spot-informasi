@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { AiOutlinePauseCircle, AiOutlinePlayCircle } from "react-icons/ai";
-import { TbPlayerTrackPrev, TbPlayerTrackNext } from "react-icons/tb";
+import { useState, useEffect, useRef } from "react";
+import { IoPlayCircleSharp, IoPauseCircleSharp, IoPlayForwardCircleSharp, IoPlayBackCircleSharp } from "react-icons/io5"
 
 const Music = ({ audio }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -9,14 +8,31 @@ const Music = ({ audio }) => {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.addEventListener("timeupdate", updateTime);
-      audioRef.current.addEventListener("loadedmetadata", updateDuration);
-      return () => {
-        audioRef.current.removeEventListener("timeupdate", updateTime);
-        audioRef.current.removeEventListener("loadedmetadata", updateDuration);
-      };
+    const audioElement = audioRef.current;
+
+    const updateTime = () => {
+      if (audioElement) {
+        setCurrentTime(audioElement.currentTime);
+      }
+    };
+
+    const updateDuration = () => {
+      if (audioElement) {
+        setDuration(audioElement.duration);
+      }
+    };
+
+    if (audioElement) {
+      audioElement.addEventListener("timeupdate", updateTime);
+      audioElement.addEventListener("loadedmetadata", updateDuration);
     }
+
+    return () => {
+      if (audioElement) {
+        audioElement.removeEventListener("timeupdate", updateTime);
+        audioElement.removeEventListener("loadedmetadata", updateDuration);
+      }
+    };
   }, [audioRef.current]);
 
   const playPauseHandler = () => {
@@ -27,18 +43,6 @@ const Music = ({ audio }) => {
         audioRef.current.play();
       }
       setIsPlaying(!isPlaying);
-    }
-  };
-
-  const updateTime = () => {
-    if (audioRef.current) {
-      setCurrentTime(audioRef.current.currentTime);
-    }
-  };
-
-  const updateDuration = () => {
-    if (audioRef.current) {
-      setDuration(audioRef.current.duration);
     }
   };
 
@@ -79,41 +83,37 @@ const Music = ({ audio }) => {
   return (
     <div className="px-4 pb-4">
       <audio ref={audioRef} src={`${audio}`} />
-      <div className="flex flex-col items-center space-y-4">
+      <div className="flex flex-col items-center space-y-3 px-3">
         <input
           type="range"
           value={currentTime}
           max={duration}
           id="progress"
           onChange={handleProgressChange}
-          className="appearance-none w-full h-6 rounded-md cursor-pointer"
+          className="appearance-none w-full h-3 rounded-md cursor-pointer"
           style={{
             background:
               "linear-gradient(to right, #000 0%, #000 " +
               (currentTime / duration) * 100 +
               "%, #ccc " +
               (currentTime / duration) * 100 +
-              "%, #ccc 100%)",
-            thumb: {
-              background: "#fff",
-              border: "2px solid #000",
-            },
+              "%, #ccc 100%)"
           }}
         />
 
-        <div className="flex justify-center items-center space-x-4">
+        <div className="flex justify-center items-center space-x-6">
           <button
             onClick={backward}
             className="text-2xl"
-            style={{ fontSize: "2rem" }}
+            style={{ fontSize: "4rem" }}
           >
-            <TbPlayerTrackPrev style={{ fontSize: "4rem" }} />
+            <IoPlayBackCircleSharp style={{ fontSize: "5rem" }} />
           </button>
           <button className="text-2xl" onClick={playPauseHandler}>
             {isPlaying ? (
-              <AiOutlinePauseCircle style={{ fontSize: "4rem" }} />
+              <IoPauseCircleSharp style={{ fontSize: "5rem" }} />
             ) : (
-              <AiOutlinePlayCircle style={{ fontSize: "4rem" }} />
+              <IoPlayCircleSharp style={{ fontSize: "5rem" }} />
             )}
           </button>
           <button
@@ -121,7 +121,7 @@ const Music = ({ audio }) => {
             className="text-2xl"
             style={{ fontSize: "2rem" }}
           >
-            <TbPlayerTrackNext style={{ fontSize: "4rem" }} />
+            <IoPlayForwardCircleSharp style={{ fontSize: "5rem" }} />
           </button>
         </div>
       </div>
