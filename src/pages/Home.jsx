@@ -46,7 +46,7 @@ const Home = () => {
       </div>
 
       <div className="mb-6 flex justify-center items-center">
-        <input type="text" onChange={(e) => onKeywordChangeHandler(e.target.value)} placeholder="ISI INI AJG" className="bg-gray-100 pl-2 pr-14 py-2 rounded-lg text-black" />
+        <input type="text" onChange={(e) => onKeywordChangeHandler(e.target.value)} placeholder="Search" className="bg-gray-100 pl-2 pr-14 py-2 rounded-lg text-black" />
       </div>
 
       <div className="flex flex-col gap-4 px-7">
