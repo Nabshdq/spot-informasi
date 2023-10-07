@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import Logos from "../components/Logos";
-import { getAllSpots } from "../api/service";
+import { getAllCategoriesName, getAllSpots, getSpotsByCategories } from "../api/service";
 import SpotCard from "../components/SpotCard";
 import { useSearchParams } from "react-router-dom";
+import Carousel from "../components/Carousel";
+import Icon from "../components/Icon";
 
 const Home = () => {
   const [data, setData] = useState([])
   const [spots, setSpots] = useState(data)
   const [searchParams, setSearchParams] = useSearchParams()
+  const [categoriesName, setCategoriesName] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState()
+
   const defaultKeyword = searchParams.get("judul")
 
   const onKeywordChangeHandler = (judul) => {
@@ -23,6 +28,12 @@ const Home = () => {
       }
     }
     getData()
+
+    const getOptionValue = async () => {
+      const data = await getAllCategoriesName()
+      setCategoriesName(data)
+    }
+    getOptionValue()
   }, [])
 
   useEffect(() => {
@@ -36,13 +47,37 @@ const Home = () => {
     }
   }, [defaultKeyword]);
 
+  useEffect(() => {
+    if (selectedCategory) {
+      const getSpotsForChoosenCategory = async () => {
+        const spotsForCategory = await getSpotsByCategories(selectedCategory);
+        setSpots(spotsForCategory);
+      };
+      getSpotsForChoosenCategory();
+    } else {
+      setSpots(data);
+    }
+  }, [selectedCategory]);
+
 
   return (
     <div className="bg-gradient-to-br from-orange-500 to-yellow-300 min-h-screen w-full pb-8">
       <Logos />
+      {/* <Icon />
+
+      <Carousel /> */}
 
       <div className="bg-white mx-4 rounded-lg py-2 mb-6">
         <h1 className="text-center text-orange-600 font-extrabold text-xl">Daftar Spot Info Inklusi</h1>
+      </div>
+
+      <div className="flex justify-center mb-8">
+        <select className="select select-error w-4/6 max-w-xs" onChange={(e) => setSelectedCategory(e.target.value)} value={selectedCategory}>
+          <option disabled selected>Pilih Kategori</option>
+          {categoriesName.map((category, i) => (
+            <option key={i} value={category.name}>{category.name}</option>
+          ))}
+        </select>
       </div>
 
       <div className="mb-6 flex justify-center items-center">
