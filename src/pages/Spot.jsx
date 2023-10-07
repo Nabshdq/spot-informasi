@@ -27,9 +27,11 @@ const Spot = () => {
 
   return (
     <div className="bg-gradient-to-br from-orange-500 to-yellow-300 min-h-screen w-full">
-      <Logos />
+      <Logos isBgWhite={true} />
 
-      <Header title={title} image={image} />
+      <div className="sm:px-24 lg:px-0">
+        <Header title={title} image={image} />
+      </div>
       <Music audio={audio} />
       <Desc desc={desc} />
 

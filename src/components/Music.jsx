@@ -81,7 +81,7 @@ const Music = ({ audio }) => {
   };
 
   return (
-    <div className="px-4 pb-4">
+    <div className="px-4 py-6 md:px-24 lg:px-96 ">
       <audio ref={audioRef} src={`${audio}`} />
       <div className="flex flex-col items-center space-y-3 px-3">
         <input

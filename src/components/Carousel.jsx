@@ -2,43 +2,50 @@ import carousel1Image from "../assets/images/carousel-1.jpg"
 import carousel2Image from "../assets/images/carousel-2.jpg"
 import carousel3Image from "../assets/images/carousel-3.jpg"
 import carousel4Image from "../assets/images/carousel-4.jpg"
+import CarouselItem from "./CarouselItem";
+import Icon from "./Icon";
+import Logos from "./Logos";
 
 const Carousel = () => {
     return (
-        <div className="carousel w-full mt-8">
-            <div id="slide1" className="carousel-item relative w-full">
-                <img src={carousel1Image} className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="btn btn-circle btn-ghost text-white font-black text-2xl">❮</a>
-                    <a href="#slide2" className="btn btn-circle btn-ghost text-white font-black text-2xl">❯</a>
-                </div>
+        <div className="relative">
+            <div className="absolute z-50 w-full">
+                <Logos />
             </div>
 
-            <div id="slide2" className="carousel-item relative w-full">
-                <img src={carousel2Image} className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide1" className="btn btn-circle btn-ghost text-white font-black text-2xl">❮</a>
-                    <a href="#slide3" className="btn btn-circle btn-ghost text-white font-black text-2xl">❯</a>
-                </div>
-            </div>
+            <Icon />
 
-            <div id="slide3" className="carousel-item relative w-full">
-                <img src={carousel3Image} className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide2" className="btn btn-circle btn-ghost text-white font-black text-2xl">❮</a>
-                    <a href="#slide4" className="btn btn-circle btn-ghost text-white font-black text-2xl">❯</a>
-                </div>
-            </div>
+            <div className="carousel relative w-full md:h-screen">
+                <CarouselItem
+                    slide={"slide1"}
+                    image={carousel1Image}
+                    prevSlide={"slide4"}
+                    nextSlide={"slide2"}
+                />
 
-            <div id="slide4" className="carousel-item relative w-full">
-                <img src={carousel4Image} className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide3" className="btn btn-circle btn-ghost text-white font-black text-2xl">❮</a>
-                    <a href="#slide1" className="btn btn-circle btn-ghost text-white font-black text-2xl">❯</a>
-                </div>
+                <CarouselItem
+                    slide={"slide2"}
+                    image={carousel2Image}
+                    prevSlide={"slide1"}
+                    nextSlide={"slide3"}
+                />
+
+                <CarouselItem
+                    slide={"slide3"}
+                    image={carousel3Image}
+                    prevSlide={"slide2"}
+                    nextSlide={"slide4"}
+                />
+
+                <CarouselItem
+                    slide={"slide4"}
+                    image={carousel4Image}
+                    prevSlide={"slide3"}
+                    nextSlide={"slide1"}
+                />
             </div>
         </div>
-    )
+    );
 }
 
 export default Carousel
