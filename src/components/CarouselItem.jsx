@@ -22,7 +22,7 @@ const CarouselItem = ({
             </div>
             {/* Tablet - Desktop View END */}
 
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <div className="absolute z-50 flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                 <a href={`#${prevSlide}`} className="btn btn-circle btn-ghost text-lg">
                     ❮
                 </a>
