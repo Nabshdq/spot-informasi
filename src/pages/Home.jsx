@@ -70,7 +70,7 @@ const Home = () => {
         <input type="text" onChange={(e) => onKeywordChangeHandler(e.target.value)} placeholder="Cari..." className="bg-gray-100 pl-2 pr-14 py-2 rounded-lg text-black w-2/3" />
 
         <select className="select select-error w-1/3 max-w-xs text-xs bg-orange-600 border-yellow-300 border-2 text-white font-semibold" onChange={(e) => setSelectedCategory(e.target.value)} value={selectedCategory}>
-          <option disabled selected>Pilih Kategori</option>
+          <option disabled selected>Kategori</option>
           {categoriesName.map((category, i) => (  
             <option key={i} value={category.name}>{category.name}</option>
           ))}
