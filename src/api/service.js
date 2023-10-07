@@ -26,13 +26,11 @@ export const getSpotsByCategories = async (categoryName) => {
   if (categoryError) {
     throw Error(categoryError.message);
   }
-
   if (categoryData.length === 0) {
     return [];
   }
 
   const categoryId = categoryData[0].id;
-
   const { data: spotsData, error: spotsError } = await supabase
     .from("spots")
     .select("*")

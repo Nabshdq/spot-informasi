@@ -61,13 +61,13 @@ const Home = () => {
 
 
   return (
-    <div className="bg-gradient-to-br from-orange-500 to-yellow-300 min-h-screen w-full pb-8">
+    <div className="bg-gradient-to-br from-yellow-300 to-orange-500 via-orange-600  min-h-screen w-full pb-8">
       <Logos />
-      {/* <Icon />
+      { <Icon /> }
 
-      <Carousel /> */}
+      <Carousel />
 
-      <div className="bg-white mx-4 rounded-lg py-2 mb-6">
+      <div className="bg-white mx-4 rounded-lg py-2 mb-6 mt-8">
         <h1 className="text-center text-orange-600 font-extrabold text-xl">Daftar Spot Info Inklusi</h1>
       </div>
 

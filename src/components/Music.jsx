@@ -100,20 +100,20 @@ const Music = ({ audio }) => {
               "%, #ccc 100%)"
           }}
         />
+        
 
         <div className="flex justify-center items-center space-x-6">
           <button
             onClick={backward}
             className="text-2xl"
-            style={{ fontSize: "4rem" }}
           >
-            <IoPlayBackCircleSharp style={{ fontSize: "5rem" }} />
+            <IoPlayBackCircleSharp style={{ fontSize: "5rem",  color: "black"}} />
           </button>
           <button className="text-2xl" onClick={playPauseHandler}>
             {isPlaying ? (
-              <IoPauseCircleSharp style={{ fontSize: "5rem" }} />
+              <IoPauseCircleSharp style={{ fontSize: "5rem",  color: "black" }} />
             ) : (
-              <IoPlayCircleSharp style={{ fontSize: "5rem" }} />
+              <IoPlayCircleSharp style={{ fontSize: "5rem",  color: "black" }} />
             )}
           </button>
           <button
@@ -121,7 +121,7 @@ const Music = ({ audio }) => {
             className="text-2xl"
             style={{ fontSize: "2rem" }}
           >
-            <IoPlayForwardCircleSharp style={{ fontSize: "5rem" }} />
+            <IoPlayForwardCircleSharp style={{ fontSize: "5rem",  color: "black" }} />
           </button>
         </div>
       </div>
