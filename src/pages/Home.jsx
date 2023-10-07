@@ -61,9 +61,10 @@ const Home = () => {
 
 
   return (
-    <div className="bg-gradient-to-br from-yellow-300 to-orange-500 via-orange-600  min-h-screen w-full pb-8">
+    <div className="bg-gradient-to-br from-yellow-300 to-orange-500 via-orange-600 min-h-screen w-full pb-8">
       <Logos />
-      { <Icon /> }
+
+      <Icon />
 
       <Carousel />
 
