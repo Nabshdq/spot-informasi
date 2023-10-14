@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <title>Spot Informasi</title>
-        <link rel="shortcut icon" href="/logo.jpg" />
+        <link rel="shortcut icon" href="/logo.png" />
       </Head>
       <body>
         <Main />
