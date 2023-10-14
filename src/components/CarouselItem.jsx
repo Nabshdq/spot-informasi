@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const CarouselItem = ({
     slide,
     image,
@@ -6,7 +8,7 @@ const CarouselItem = ({
 }) => {
     return (
         <div id={slide} className="carousel-item relative w-full">
-            <img
+            <Image
                 src={image}
                 alt="Carousel Image"
                 className="w-full object-cover brightness-50 md:blur-sm"
@@ -14,7 +16,7 @@ const CarouselItem = ({
 
             {/* Tablet - Desktop View START */}
             <div className="hidden md:flex absolute justify-end items-end w-full h-full brightness-100">
-                <img
+                <Image
                     src={image}
                     alt="carousel"
                     className="w-10/12 h-4/6 object-cover md:w-8/12 md:h-5/6"

@@ -1,13 +1,13 @@
 import supabase from "./index";
 
 export const getSelectedSpot = async (id) => {
+  console.log(id);
   const { data, error } = await supabase
     .from("spots")
     .select("*")
     .eq("id", id)
   if (data) return data;
   if (error) throw Error(error)
-
 };
 
 export const getAllSpots = async () => {

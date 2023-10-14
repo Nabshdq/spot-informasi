@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { getAllCategoriesName, getAllSpots, getSpotsByCategories } from "../api/service";
-import SpotCard from "../components/SpotCard";
-import { useSearchParams } from "react-router-dom";
-import Carousel from "../components/Carousel";
+import { getAllCategoriesName, getAllSpots, getSpotsByCategories } from "@/api/service";
+import SpotCard from "@/components/SpotCard";
+import { useSearchParams } from "next/navigation";
+import Carousel from "@/components/Carousel";
 
-const Home = () => {
+export default function Home() {
   const [data, setData] = useState([])
   const [spots, setSpots] = useState(data)
-  const [searchParams, setSearchParams] = useSearchParams()
   const [categoriesName, setCategoriesName] = useState([])
   const [selectedCategory, setSelectedCategory] = useState()
 
+  const searchParams = useSearchParams()
   const defaultKeyword = searchParams.get("judul")
 
   const onKeywordChangeHandler = (judul) => {
@@ -71,7 +71,7 @@ const Home = () => {
 
         <select className="select select-error w-1/3 max-w-xs text-xs bg-orange-600 border-yellow-300 border-2 text-white font-semibold" onChange={(e) => setSelectedCategory(e.target.value)} value={selectedCategory}>
           <option disabled selected>Kategori</option>
-          {categoriesName.map((category, i) => (  
+          {categoriesName.map((category, i) => (
             <option key={i} value={category.name}>{category.name}</option>
           ))}
         </select>
@@ -85,5 +85,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;
