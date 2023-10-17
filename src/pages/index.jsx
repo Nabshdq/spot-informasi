@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllCategoriesName, getAllSpots, getSpotsByCategories } from "@/api/service";
 import SpotCard from "@/components/SpotCard";
-import { useSearchParams } from "next/navigation";
 import Carousel from "@/components/Carousel";
 
 export default function Home() {
@@ -9,12 +8,10 @@ export default function Home() {
   const [spots, setSpots] = useState(data)
   const [categoriesName, setCategoriesName] = useState([])
   const [selectedCategory, setSelectedCategory] = useState()
+  const [defaultKeyword, setDefaultKeyword] = useState("")
 
-  const searchParams = useSearchParams()
-  const defaultKeyword = searchParams.get("judul")
-
-  const onKeywordChangeHandler = (judul) => {
-    setSearchParams({ judul })
+  const onKeywordChangeHandler = (e) => {
+    setDefaultKeyword(e.target.value)
   }
 
   useEffect(() => {
@@ -59,7 +56,7 @@ export default function Home() {
 
 
   return (
-    <div className="bg-gradient-to-br from-yellow-300 to-orange-700 via-orange-600 min-h-screen w-full pb-8">
+    <div className="bg-gradient-to-br from-yellow-300 to-orange-700 via-orange-600 min-h-screen w-full pb-16">
       <Carousel />
 
       <div className="bg-white mx-4 rounded-lg py-2 mb-6 mt-8">
@@ -67,7 +64,7 @@ export default function Home() {
       </div>
 
       <div className="mb-6 flex justify-center items-center px-4 gap-3">
-        <input type="text" onChange={(e) => onKeywordChangeHandler(e.target.value)} placeholder="Cari..." className="bg-gray-100 pl-2 pr-14 py-2 rounded-lg text-black w-2/3" />
+        <input type="text" name="mysearch" onChange={onKeywordChangeHandler} placeholder="Cari..." className="bg-gray-100 pl-2 pr-14 py-2 rounded-lg text-black w-2/3" />
 
         <select className="select select-error w-1/3 max-w-xs text-xs bg-orange-600 border-yellow-300 border-2 text-white font-semibold" onChange={(e) => setSelectedCategory(e.target.value)} value={selectedCategory}>
           <option disabled selected>Kategori</option>
