@@ -19,7 +19,7 @@ const CarouselItem = ({
                 <Image
                     src={image}
                     alt="carousel"
-                    className="w-10/12 h-4/6 object-cover md:w-8/12 md:h-5/6"
+                    className="w-10/12 h-4/6 object-cover md:w-8/12 md:h-5/6 md:rounded-3xl"
                 />
             </div>
             {/* Tablet - Desktop View END */}
