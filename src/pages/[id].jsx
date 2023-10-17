@@ -24,7 +24,7 @@ export default function Spot() {
           setTitle(data[0].title);
           setImage(data[0].image);
           setAudio(data[0].audio);
-          setDesc(data[0].desc);
+          setDesc(data[0].desc.split("\\n"));
         }
       } catch (error) {
       }

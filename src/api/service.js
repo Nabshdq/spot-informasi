@@ -1,7 +1,6 @@
 import supabase from "./index";
 
 export const getSelectedSpot = async (id) => {
-  console.log(id);
   const { data, error } = await supabase
     .from("spots")
     .select("*")
