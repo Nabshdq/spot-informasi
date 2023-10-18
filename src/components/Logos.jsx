@@ -4,7 +4,6 @@ import kampusMerdekaImage from "../../public/kampus-merdeka.png"
 import pkmImage from "../../public/pkm.png"
 import simbelmawaImage from "../../public/simbelmawa.png"
 import unhasImage from "../../public/unhas.png"
-// import spotInformasiInklusiImage from "../../public/spot-informasi-inklusi.png"
 
 const Logos = ({ isBgWhite }) => {
     return (
