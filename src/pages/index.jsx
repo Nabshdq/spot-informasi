@@ -7,7 +7,7 @@ export default function Home() {
   const [data, setData] = useState([])
   const [spots, setSpots] = useState(data)
   const [categoriesName, setCategoriesName] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState()
+  const [selectedCategory, setSelectedCategory] = useState("Semua")
   const [defaultKeyword, setDefaultKeyword] = useState("")
 
   const onKeywordChangeHandler = (e) => {
@@ -44,11 +44,14 @@ export default function Home() {
 
   useEffect(() => {
     if (selectedCategory) {
-      const getSpotsForChoosenCategory = async () => {
-        const spotsForCategory = await getSpotsByCategories(selectedCategory);
-        setSpots(spotsForCategory);
-      };
-      getSpotsForChoosenCategory();
+      if (selectedCategory === "Semua") setSpots(data)
+      else {
+        const getSpotsForChoosenCategory = async () => {
+          const spotsForCategory = await getSpotsByCategories(selectedCategory);
+          setSpots(spotsForCategory);
+        };
+        getSpotsForChoosenCategory();
+      }
     } else {
       setSpots(data);
     }
@@ -67,7 +70,8 @@ export default function Home() {
         <input type="text" name="mysearch" onChange={onKeywordChangeHandler} placeholder="Cari..." className="bg-gray-100 pl-2 pr-14 py-2 rounded-lg text-black w-2/3" />
 
         <select className="select select-error w-1/3 max-w-xs text-xs bg-orange-600 border-yellow-300 border-2 text-white font-semibold" onChange={(e) => setSelectedCategory(e.target.value)} value={selectedCategory}>
-          <option disabled selected>Kategori</option>
+          <option selected disabled>Kategori</option>
+          <option selected value="Semua">Semua</option>
           {categoriesName.map((category, i) => (
             <option key={i} value={category.name}>{category.name}</option>
           ))}
