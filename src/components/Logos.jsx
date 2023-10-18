@@ -5,9 +5,9 @@ import pkmImage from "../../public/pkm.png"
 import simbelmawaImage from "../../public/simbelmawa.png"
 import unhasImage from "../../public/unhas.png"
 
-const Logos = ({ isBgWhite }) => {
+const Logos = () => {
     return (
-        <div className={`${isBgWhite ? "bg-white" : "bg-white"} mb-6 p-3 mx-8 md:mx-96 rounded-b-xl flex justify-center items-center`}>
+        <div className="bg-white mb-6 p-3 mx-8 md:mx-60 2xl:mx-96 rounded-b-xl flex justify-center items-center">
             <Image src={tutWuriHandayaniImage} alt="" className="w-11 md:w-28" />
             <Image src={kampusMerdekaImage} alt="" className="w-11 mr-2.5 md:w-28" />
             <Image src={simbelmawaImage} alt="" className="w-11 mr-2.5 md:w-28" />
