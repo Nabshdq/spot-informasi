@@ -10,7 +10,7 @@ const Icon = () => {
                 className="w-[13%] md:w-1/4 md:ml-9 glowing-image"
             />
             <h3
-                className="text-white font-bold w-1/2 lg:w-1/3s text-center md:text-xl lg:text-2xl -ml-7 glowing-text"
+                className="text-white font-bold w-1/2 2xl:w-1/3 text-center md:text-xl lg:text-2xl -ml-7 glowing-text"
             >
                 Selamat Datang di Spot Informasi Inklusi
             </h3>
